@@ -63,7 +63,7 @@ public class StockCtrl {
 
     @ApiOperation(value = "刷新代码", notes = "初始化所有代码")
     @ResponseBody
-    @PostMapping(value = "/refresh_code")
+    @GetMapping(value = "/refresh_code")
     public String initCode() {
         try {
             stockCodeInfoService.refreshCode();

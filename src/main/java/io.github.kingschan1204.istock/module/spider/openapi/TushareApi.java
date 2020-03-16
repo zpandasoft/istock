@@ -79,8 +79,11 @@ public class TushareApi {
         json.put("fields", "ts_code,symbol,name,area,industry,fullname,market,list_status,list_date");
         String result = post(json);
         JSONObject datas = JSON.parseObject(result);
-        JSONArray items = datas.getJSONObject("data").getJSONArray("items");
-        return items;
+        System.out.println(datas);
+        if(datas!=null&&datas.getJSONObject("data")!=null){
+            return datas.getJSONObject("data").getJSONArray("items");
+        }
+        return new JSONArray();
     }
 
     /**
