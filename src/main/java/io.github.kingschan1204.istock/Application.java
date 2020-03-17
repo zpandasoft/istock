@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +36,8 @@ public class Application {
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("industry", ehcacheUtil.getKey("App_init","ths_type"));
-        model.addAttribute("zzfl", ehcacheUtil.getKey("App_init","zzfl"));
+        Object obj=ehcacheUtil.getKey("App_init","zzfl");
+        model.addAttribute("zzfl",obj==null?new ArrayList<>():obj);
         return "index";
     }
 
